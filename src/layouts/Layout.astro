@@ -9,8 +9,100 @@ interface Props {
 
 const {
   title = `${SITE.brand} — Premium Implants & Hollywood Smile`,
-  description = "Premium dental implants and Hollywood Smile in Cyprus for international patients. Implants from €450, crowns from €190. Send your X-ray and get a free treatment plan in minutes.",
+  description = `Premium dental implants and Hollywood Smile in Cyprus for international patients. Implants from ${SITE.services.implants.price}, crowns from ${SITE.services.crowns.price}. Send your X-ray and get a free treatment plan in minutes.`,
 } = Astro.props;
+
+const SITE_URL = "https://cyprusimplantexperts.com";
+
+const parsePrice = (value: string) => value.replace(/[^\d.,]/g, "").replace(/,/g, "");
+const parseReviewCount = (value: string) => Number.parseInt(value.replace(/\D/g, ""), 10);
+
+const serviceItems = SITE.serviceKeys.map((key, index) => {
+  const service = SITE.services[key];
+  return {
+    "@type": "Service",
+    "@id": `${SITE_URL}/#service-${index + 1}`,
+    name: service.schemaName,
+    description: service.schemaDescription,
+    areaServed: {
+      "@type": "Country",
+      name: "Cyprus",
+    },
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: parsePrice(service.price),
+      url: `${SITE_URL}/#quote-form`,
+      availability: "https://schema.org/InStock",
+    },
+  };
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE.brand,
+      url: SITE_URL,
+      logo: `${SITE_URL}/favicon.svg`,
+      description: SITE.advisorDesc,
+      areaServed: {
+        "@type": "Country",
+        name: "Cyprus",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Limassol",
+        addressCountry: "CY",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: SITE.whatsappNumber,
+        contactType: "customer support",
+        areaServed: "CY",
+        availableLanguage: ["en"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE.brand,
+      inLanguage: "en",
+      description,
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#advisory-service`,
+      name: SITE.brand,
+      url: SITE_URL,
+      description: SITE.advisorDesc,
+      areaServed: {
+        "@type": "Country",
+        name: "Cyprus",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: SITE.rating,
+        reviewCount: parseReviewCount(SITE.reviews),
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Dental Services in Cyprus",
+        itemListElement: serviceItems,
+      },
+      provider: {
+        "@id": `${SITE_URL}/#organization`,
+      },
+    },
+    ...serviceItems,
+  ],
+};
 ---
 
 <!doctype html>
@@ -32,11 +124,12 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="bg-white text-navy">
     <slot />
     <script>
-      import "../scripts/animations.ts";
+      import "../scripts/animations";
     </script>
   </body>
 </html>

@@ -1,0 +1,60 @@
+---
+import BeforeAfterSlider from "../components/BeforeAfterSlider.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Before & After Demo">
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl sm:text-5xl font-bold text-navy mb-4">Before & After Slider Demo</h1>
+        <p class="text-lg text-slate-600">Interaktif slider ile sonuçlarımızı keşfedin</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Demo 1 -->
+        <div>
+          <BeforeAfterSlider
+            beforeImage="https://auradent.clinic/wp-content/uploads/2026/03/IMG_0721.jpeg"
+            afterImage="https://auradent.clinic/wp-content/uploads/2026/03/IMG_0723.jpeg"
+            title="Smile Transformation"
+            caption="Digital workflow with zirconia restoration"
+          />
+        </div>
+
+        <!-- Demo 2 - Static version (no auto-play) -->
+        <div>
+          <BeforeAfterSlider
+            beforeImage="https://auradent.clinic/wp-content/uploads/2026/03/IMG_0721.jpeg"
+            afterImage="https://auradent.clinic/wp-content/uploads/2026/03/IMG_0723.jpeg"
+            title="Manual Control"
+            caption="Drag the slider or click to compare"
+            autoPlay={false}
+          />
+        </div>
+      </div>
+
+      <div class="mt-16 p-8 bg-slate-100 rounded-lg">
+        <h2 class="text-2xl font-bold text-navy mb-4">Nasıl Kullanılır?</h2>
+        <pre
+          class="bg-white p-4 rounded overflow-x-auto"><code>{`<BeforeAfterSlider
+  beforeImage="path/to/before.jpg"
+  afterImage="path/to/after.jpg"
+  title="Optional Title"
+  caption="Optional Caption"
+  autoPlay={true}
+/>`}</code></pre>
+
+        <div class="mt-4 text-slate-700">
+          <p><strong>Özellikler:</strong></p>
+          <ul class="list-disc list-inside mt-2 space-y-1">
+            <li><strong>autoPlay:</strong> Sayfa yüklenince otomatik animasyon (default: true)</li>
+            <li><strong>Manual Drag:</strong> Slider'ı sürükleyerek kontrol edebilirsiniz</li>
+            <li><strong>Click to Move:</strong> İstediğiniz yere tıklayarak slider'ı hareket ettirebilirsiniz</li>
+            <li><strong>Responsive:</strong> Tüm cihazlarda çalışır (mobil, tablet, desktop)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -12,7 +12,8 @@ import { SITE } from "../lib/site";
     </div>
     <h2 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Get Your Fixed-Price Treatment Plan</h2>
     <p class="mx-auto mt-5 max-w-2xl text-base text-slate-300 sm:text-lg">
-      Send your X-ray or photos and receive a clear, written treatment plan with fixed pricing — plus the full clinic profile — before you book a flight.
+      Send your X-ray or photos and receive a clear, written treatment plan with fixed pricing — plus the full clinic profile —
+      before you book a flight.
     </p>
 
     <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -41,25 +42,31 @@ import { SITE } from "../lib/site";
 
     <div class="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-slate-400">
       <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          ><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg
+        >
         No obligation
       </span>
       <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          ><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg
+        >
         No upfront payment
       </span>
       <span class="inline-flex items-center gap-1.5">
-        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="h-3.5 w-3.5 text-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          ><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg
+        >
         You decide after seeing your plan
       </span>
     </div>
 
     <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
-      <span>Implants from {SITE.prices.implants}</span>
+      <span>Implants from {SITE.services.implants.price}</span>
       <span class="hidden sm:inline">·</span>
-      <span>Crowns from {SITE.prices.crowns}</span>
+      <span>Crowns from {SITE.services.crowns.price}</span>
       <span class="hidden sm:inline">·</span>
-      <span>Hollywood Smile from {SITE.prices.hollywood}</span>
+      <span>Hollywood Smile from {SITE.services.hollywood.price}</span>
     </div>
   </div>
 </section>
