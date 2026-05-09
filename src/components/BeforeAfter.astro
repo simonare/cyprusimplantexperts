@@ -1,21 +1,27 @@
 ---
 import { SITE } from "../lib/site";
+import CaseImage1 from "../assets/images/before-after/beaf-patient-uk-2.webp";
+import CaseImage2 from "../assets/images/before-after/beaf-patient-uk-3.webp";
+import CaseImage3 from "../assets/images/before-after/beaf-patient-cy-1.webp";
 
 const cases = [
   {
     title: "Full-arch zirconia restoration",
     materials: "German implants · monolithic zirconia bridge",
     duration: "5–7 days · 2 visits",
+    image: CaseImage1,
   },
   {
     title: "Hollywood Smile (upper arch)",
     materials: "10 zirconia veneers · digital smile design",
     duration: "5–7 days · 1 visit",
+    image: CaseImage2,
   },
   {
     title: "All-on-6 with immediate loading",
     materials: "Swiss implants · titanium bar framework",
     duration: "7 days first visit · final delivery in 3–4 months",
+    image: CaseImage3,
   },
 ];
 ---
@@ -44,7 +50,8 @@ const cases = [
         {
           cases.map((c, i) => (
             <div class="relative w-[85%] shrink-0 overflow-hidden rounded-3xl border border-slate-200 shadow-[var(--shadow-soft)] sm:w-auto">
-              <div class="ba-placeholder aspect-[4/3] w-full">
+              <div class="relative aspect-1 w-full overflow-hidden">
+                <img src={c.image.src} alt={`Case ${i + 1} result`} class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-700">
                   Case {i + 1}
                 </div>
